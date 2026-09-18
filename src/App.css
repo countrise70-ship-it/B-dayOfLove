@@ -1,0 +1,835 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #10051f;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================================
+   MAIN BACKGROUND
+========================================= */
+
+.birthday-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 15% 20%,
+      rgba(145, 75, 255, 0.3),
+      transparent 28%),
+    radial-gradient(circle at 85% 75%,
+      rgba(91, 45, 190, 0.3),
+      transparent 30%),
+    linear-gradient(135deg, #090313 0%, #16072b 45%, #0d0419 100%);
+}
+
+/* Large glowing background circles */
+
+.birthday-page::before,
+.birthday-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: ambientFloat 8s ease-in-out infinite alternate;
+}
+
+.birthday-page::before {
+  width: 280px;
+  height: 280px;
+  background: rgba(157, 92, 255, 0.25);
+  top: -80px;
+  left: -70px;
+}
+
+.birthday-page::after {
+  width: 320px;
+  height: 320px;
+  background: rgba(108, 54, 220, 0.22);
+  right: -100px;
+  bottom: -100px;
+  animation-delay: 2s;
+}
+
+@keyframes ambientFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(30px, -25px) scale(1.15);
+  }
+}
+
+/* =========================================
+   FLOATING STARS
+========================================= */
+
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-hearts span {
+  position: absolute;
+  color: rgba(224, 207, 255, 0.8);
+  font-size: 9px;
+  animation: starFloat 7s linear infinite;
+  opacity: 0;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 18%;
+  animation-delay: 2s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 29%;
+  animation-delay: 4s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 42%;
+  animation-delay: 1s;
+}
+
+.floating-hearts span:nth-child(5) {
+  left: 55%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(6) {
+  left: 67%;
+  animation-delay: 5s;
+}
+
+.floating-hearts span:nth-child(7) {
+  left: 79%;
+  animation-delay: 2.5s;
+}
+
+.floating-hearts span:nth-child(8) {
+  left: 90%;
+  animation-delay: 4.5s;
+}
+
+.floating-hearts span:nth-child(9) {
+  left: 12%;
+  animation-delay: 6s;
+}
+
+.floating-hearts span:nth-child(10) {
+  left: 35%;
+  animation-delay: 7s;
+}
+
+.floating-hearts span:nth-child(11) {
+  left: 48%;
+  animation-delay: 5.5s;
+}
+
+.floating-hearts span:nth-child(12) {
+  left: 62%;
+  animation-delay: 1.5s;
+}
+
+.floating-hearts span:nth-child(13) {
+  left: 73%;
+  animation-delay: 3.5s;
+}
+
+.floating-hearts span:nth-child(14) {
+  left: 84%;
+  animation-delay: 6.5s;
+}
+
+.floating-hearts span:nth-child(15) {
+  left: 96%;
+  animation-delay: 2.8s;
+}
+
+@keyframes starFloat {
+  0% {
+    transform: translateY(110vh) scale(0.4);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   MAIN GLASS CARD
+========================================= */
+
+.card {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 100%);
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 65px 55px;
+
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 35px;
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  overflow: hidden;
+
+  animation: cardAppear 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  top: -120px;
+  right: -80px;
+
+  background: rgba(186, 145, 255, 0.2);
+  filter: blur(30px);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  bottom: -100px;
+  left: -70px;
+
+  background: rgba(108, 60, 210, 0.2);
+  filter: blur(30px);
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 580px;
+  text-align: center;
+}
+
+.fade-in {
+  animation: contentEnter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes contentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.small-title {
+  margin: 0 0 15px;
+  color: #cbb4f7;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 10px 0 20px;
+  color: #ffffff;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2.5rem, 6vw, 4.4rem);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  color: #f4efff;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.subtitle {
+  color: #bcb0ca;
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.pink-text {
+  color: #d6baff;
+  text-shadow: 0 0 30px rgba(183, 132, 255, 0.6);
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.emoji {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background: linear-gradient(135deg,
+      rgba(211, 183, 255, 0.16),
+      rgba(124, 77, 210, 0.18));
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  font-size: 2rem;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.12);
+
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+/* =========================================
+   INPUT
+========================================= */
+
+input {
+  width: min(430px, 100%);
+  height: 58px;
+
+  margin: 20px auto;
+
+  display: block;
+
+  padding: 0 22px;
+
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 17px;
+
+  outline: none;
+
+  font-size: 1rem;
+  text-align: center;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+input::placeholder {
+  color: #8f849e;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #bd91ff;
+
+  box-shadow:
+    0 0 0 4px rgba(177, 125, 255, 0.1),
+    0 0 35px rgba(150, 90, 255, 0.15);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.primary-button,
+.yes-button {
+  position: relative;
+
+  border: none;
+  border-radius: 16px;
+
+  padding: 15px 30px;
+
+  color: #180a2b;
+
+  background: linear-gradient(135deg,
+      #ffffff 0%,
+      #eadcff 100%);
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(202, 163, 255, 0.15);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.primary-button:hover,
+.yes-button:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(206, 168, 255, 0.35);
+}
+
+.primary-button:active,
+.yes-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* =========================================
+   HINT
+========================================= */
+
+.hint {
+  margin-top: 22px;
+  color: #776b88;
+  font-size: 0.78rem;
+}
+
+/* =========================================
+   CONFIRMATION BUTTON AREA
+========================================= */
+
+.choice-area {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin-top: 20px;
+}
+
+.yes-button {
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+}
+
+.yes-button:hover {
+  transform: translate(-50%, -55%);
+}
+
+.no-button {
+  position: absolute;
+
+  padding: 13px 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+
+  color: #d9c9eb;
+  background: rgba(255, 255, 255, 0.06);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    top 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================
+   QUOTES
+========================================= */
+
+.quote-box {
+  position: relative;
+
+  margin: 35px auto 15px;
+  padding: 38px 35px;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(153, 100, 240, 0.08));
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.quote-box::before {
+  content: "“";
+
+  position: absolute;
+  top: -35px;
+  left: 22px;
+
+  color: rgba(199, 162, 255, 0.35);
+
+  font-family: Georgia, serif;
+  font-size: 7rem;
+  line-height: 1;
+}
+
+.quote-box p {
+  margin: 0;
+
+  color: #eee7f8;
+
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  line-height: 1.6;
+}
+
+.quote-count {
+  margin: 15px 0 25px;
+
+  color: #83758f;
+
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+}
+
+/* =========================================
+   BIRTHDAY
+========================================= */
+
+.birthday-content {
+  max-width: 600px;
+}
+
+.birthday-emoji {
+  font-size: 2.4rem;
+}
+
+.birthday-content>p:not(.small-title) {
+  color: #b9afc4;
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+.highlight-text {
+  color: #dfcaff !important;
+  font-family: "DM Serif Display", serif;
+  font-size: 1.8rem !important;
+  text-shadow: 0 0 25px rgba(191, 143, 255, 0.3);
+}
+
+.final-message {
+  margin-top: 35px;
+
+  color: #ffffff;
+
+  font-family: "DM Serif Display", serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.surprise-button {
+  margin-top: 15px;
+}
+
+/* =========================================
+   FINAL SURPRISE
+========================================= */
+
+.big-heart {
+  width: 110px;
+  height: 110px;
+
+  margin: 0 auto 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle,
+      rgba(225, 207, 255, 0.2),
+      rgba(139, 83, 225, 0.08));
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  font-size: 3.5rem;
+
+  animation:
+    heartPulse 2s ease-in-out infinite,
+    iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(194, 146, 255, 0.1);
+  }
+
+  50% {
+    box-shadow:
+      0 0 55px rgba(194, 146, 255, 0.4),
+      0 0 100px rgba(137, 77, 224, 0.2);
+  }
+}
+
+.surprise-text {
+  color: #bcb2c6;
+
+  font-family: "DM Serif Display", serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+.distance-line {
+  margin-top: 35px;
+
+  color: #eee6fa;
+
+  font-family: "DM Serif Display", serif;
+  font-size: 2rem;
+  font-weight: 400;
+
+  line-height: 1.4;
+}
+
+.signature {
+  margin-top: 30px;
+
+  color: #c6b2dd;
+
+  font-family: "DM Serif Display", serif;
+  font-size: 1.25rem;
+
+  line-height: 1.7;
+}
+
+.heart-row {
+  margin-top: 35px;
+
+  color: #d5c1f0;
+
+  font-size: 1.1rem;
+  letter-spacing: 8px;
+
+  animation: sparkle 2.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* =========================================
+   TOAST
+========================================= */
+
+.toast {
+  position: fixed;
+
+  z-index: 100;
+
+  top: 25px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: min(90%, 520px);
+
+  padding: 15px 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+
+  background: rgba(30, 16, 49, 0.88);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  color: #eee7f8;
+
+  text-align: center;
+  font-size: 0.88rem;
+
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(139, 82, 222, 0.15);
+
+  animation: toastIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .birthday-page {
+    padding: 20px 12px;
+  }
+
+  .card {
+    min-height: 620px;
+    padding: 45px 22px;
+    border-radius: 28px;
+  }
+
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .quote-box {
+    padding: 30px 22px;
+  }
+
+  .quote-box p {
+    font-size: 1.3rem;
+  }
+
+  .birthday-content>p:not(.small-title) {
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+
+  .choice-area {
+    height: 190px;
+  }
+
+  .yes-button {
+    left: 35%;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 38px 18px;
+  }
+
+  h1 {
+    font-size: 2.35rem;
+  }
+
+  .emoji {
+    width: 62px;
+    height: 62px;
+  }
+}
